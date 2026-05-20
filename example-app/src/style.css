@@ -1,0 +1,92 @@
+:root {
+  color-scheme: light dark;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #101820;
+  color: #edf2f4;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+main.container {
+  width: min(680px, 100%);
+  background: #17212b;
+  border: 1px solid rgba(237, 242, 244, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.24);
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.lead {
+  margin: 0 0 0.2rem;
+  color: #a8bec9;
+}
+
+label {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+input[type='text'] {
+  border: 1px solid rgba(168, 190, 201, 0.38);
+  border-radius: 6px;
+  background: #101820;
+  color: inherit;
+  padding: 0.7rem 0.8rem;
+  font-size: 1rem;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+button {
+  border: 1px solid rgba(237, 242, 244, 0.14);
+  border-radius: 6px;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #101820;
+  background: #f4c95d;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ffd86f;
+}
+
+pre#plugin-output {
+  margin: 0;
+  min-height: 160px;
+  max-height: 360px;
+  overflow: auto;
+  border-radius: 6px;
+  padding: 0.9rem;
+  background: #0b1116;
+  border: 1px solid rgba(168, 190, 201, 0.2);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+  white-space: pre-wrap;
+}

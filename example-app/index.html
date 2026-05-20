@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@capgo/capacitor-device-integrity Example</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>Device Integrity</h1>
+      <p class="lead">Inspect native integrity capabilities and tokens on a test device.</p>
+
+      <label for="hash-salt">Widevine hash salt</label>
+      <input id="hash-salt" type="text" placeholder="Defaults to Android package name" />
+
+      <label class="checkbox">
+        <input id="include-raw-id" type="checkbox" />
+        Include raw Widevine ID
+      </label>
+
+      <div class="actions">
+        <button id="get-capabilities">Capabilities</button>
+        <button id="get-widevine">Widevine</button>
+        <button id="prepare-attestation">Prepare attestation</button>
+        <button id="get-device-check">DeviceCheck</button>
+      </div>
+
+      <pre id="plugin-output">Run an action on a physical device.</pre>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,495 @@
+{
+  "api": {
+    "name": "DeviceIntegrityPlugin",
+    "slug": "deviceintegrityplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "getCapabilities",
+        "signature": "() => Promise<DeviceIntegrityCapabilities>",
+        "parameters": [],
+        "returns": "Promise<DeviceIntegrityCapabilities>",
+        "tags": [],
+        "docs": "Returns the native integrity capabilities available on the current platform.",
+        "complexTypes": [
+          "DeviceIntegrityCapabilities"
+        ],
+        "slug": "getcapabilities"
+      },
+      {
+        "name": "getWidevineFingerprint",
+        "signature": "(options?: WidevineFingerprintOptions | undefined) => Promise<WidevineFingerprintResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "WidevineFingerprintOptions | undefined"
+          }
+        ],
+        "returns": "Promise<WidevineFingerprintResult>",
+        "tags": [],
+        "docs": "Returns an Android Widevine-derived fingerprint.\n\nThe default `fingerprint` is SHA-256 over the Widevine device unique ID and a salt.\nIf `hashSalt` is not provided, Android uses the app package name as the salt.\n\nThe raw Widevine ID is sensitive and is only returned as base64 when `includeRawId` is true.",
+        "complexTypes": [
+          "WidevineFingerprintResult",
+          "WidevineFingerprintOptions"
+        ],
+        "slug": "getwidevinefingerprint"
+      },
+      {
+        "name": "prepareAttestation",
+        "signature": "(options?: PrepareAttestationOptions | undefined) => Promise<PrepareAttestationResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "PrepareAttestationOptions | undefined"
+          }
+        ],
+        "returns": "Promise<PrepareAttestationResult>",
+        "tags": [],
+        "docs": "Prepares native attestation state and returns the key/provider handle.\n\niOS: creates an App Attest key.\nAndroid: prepares a Play Integrity Standard token provider.",
+        "complexTypes": [
+          "PrepareAttestationResult",
+          "PrepareAttestationOptions"
+        ],
+        "slug": "prepareattestation"
+      },
+      {
+        "name": "createAttestation",
+        "signature": "(options: CreateAttestationOptions) => Promise<AttestationTokenResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "CreateAttestationOptions"
+          }
+        ],
+        "returns": "Promise<AttestationTokenResult>",
+        "tags": [],
+        "docs": "Creates a registration attestation token bound to a backend-issued challenge.",
+        "complexTypes": [
+          "AttestationTokenResult",
+          "CreateAttestationOptions"
+        ],
+        "slug": "createattestation"
+      },
+      {
+        "name": "createAssertion",
+        "signature": "(options: CreateAssertionOptions) => Promise<AttestationTokenResult>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "CreateAssertionOptions"
+          }
+        ],
+        "returns": "Promise<AttestationTokenResult>",
+        "tags": [],
+        "docs": "Creates a request assertion token bound to a request payload.",
+        "complexTypes": [
+          "AttestationTokenResult",
+          "CreateAssertionOptions"
+        ],
+        "slug": "createassertion"
+      },
+      {
+        "name": "getDeviceCheckToken",
+        "signature": "() => Promise<DeviceCheckTokenResult>",
+        "parameters": [],
+        "returns": "Promise<DeviceCheckTokenResult>",
+        "tags": [],
+        "docs": "Creates an iOS DeviceCheck token for server-side fraud-state lookups.",
+        "complexTypes": [
+          "DeviceCheckTokenResult"
+        ],
+        "slug": "getdevicechecktoken"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "DeviceIntegrityCapabilities",
+      "slug": "deviceintegritycapabilities",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "platform",
+          "tags": [],
+          "docs": "Platform currently executing the plugin.",
+          "complexTypes": [
+            "DeviceIntegrityPlatform"
+          ],
+          "type": "DeviceIntegrityPlatform"
+        },
+        {
+          "name": "widevine",
+          "tags": [],
+          "docs": "Android Widevine DRM support.",
+          "complexTypes": [
+            "WidevineCapabilities"
+          ],
+          "type": "WidevineCapabilities"
+        },
+        {
+          "name": "appAttest",
+          "tags": [],
+          "docs": "iOS App Attest support.",
+          "complexTypes": [
+            "SupportStatus"
+          ],
+          "type": "SupportStatus"
+        },
+        {
+          "name": "deviceCheck",
+          "tags": [],
+          "docs": "iOS DeviceCheck support.",
+          "complexTypes": [
+            "SupportStatus"
+          ],
+          "type": "SupportStatus"
+        },
+        {
+          "name": "playIntegrity",
+          "tags": [],
+          "docs": "Android Play Integrity support.",
+          "complexTypes": [
+            "SupportStatus"
+          ],
+          "type": "SupportStatus"
+        }
+      ]
+    },
+    {
+      "name": "WidevineCapabilities",
+      "slug": "widevinecapabilities",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "supported",
+          "tags": [],
+          "docs": "Whether the Widevine DRM scheme is supported by the device.",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "fingerprintAvailable",
+          "tags": [],
+          "docs": "Whether the Widevine device unique ID can be read.",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "securityLevelScanSupported",
+          "tags": [],
+          "docs": "Whether the Widevine security level property can be read.",
+          "complexTypes": [],
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "SupportStatus",
+      "slug": "supportstatus",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "supported",
+          "tags": [],
+          "docs": "Whether the capability is available on the current device.",
+          "complexTypes": [],
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "WidevineFingerprintResult",
+      "slug": "widevinefingerprintresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "platform",
+          "tags": [],
+          "docs": "Always `android`.",
+          "complexTypes": [],
+          "type": "'android'"
+        },
+        {
+          "name": "source",
+          "tags": [],
+          "docs": "Always `widevine`.",
+          "complexTypes": [],
+          "type": "'widevine'"
+        },
+        {
+          "name": "fingerprint",
+          "tags": [],
+          "docs": "Salted SHA-256 fingerprint for storing alongside a user record.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "widevineIdSha256",
+          "tags": [],
+          "docs": "Unsalted SHA-256 hash of the Widevine device unique ID.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "widevineIdBase64",
+          "tags": [],
+          "docs": "Raw Widevine device unique ID encoded as base64.\n\nReturned only when `includeRawId` is true.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "securityLevel",
+          "tags": [],
+          "docs": "Widevine security level when available, for example `L1` or `L3`.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "vendor",
+          "tags": [],
+          "docs": "DRM vendor when available.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "version",
+          "tags": [],
+          "docs": "DRM plugin version when available.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "description",
+          "tags": [],
+          "docs": "DRM plugin description when available.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "WidevineFingerprintOptions",
+      "slug": "widevinefingerprintoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "includeRawId",
+          "tags": [],
+          "docs": "Return the raw Widevine device unique ID as base64.\n\nDefaults to `false`.",
+          "complexTypes": [],
+          "type": "boolean | undefined"
+        },
+        {
+          "name": "hashSalt",
+          "tags": [],
+          "docs": "Optional salt used to derive `fingerprint`.\n\nAndroid uses the app package name when omitted.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "PrepareAttestationResult",
+      "slug": "prepareattestationresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "keyId",
+          "tags": [],
+          "docs": "iOS App Attest key ID or Android Play Integrity provider handle ID.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "format",
+          "tags": [],
+          "docs": "Native attestation format used by the current platform.",
+          "complexTypes": [
+            "AttestationFormat"
+          ],
+          "type": "AttestationFormat"
+        }
+      ]
+    },
+    {
+      "name": "PrepareAttestationOptions",
+      "slug": "prepareattestationoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "cloudProjectNumber",
+          "tags": [],
+          "docs": "Android only. Google Cloud project number for Play Integrity.\n\nCan be configured globally via `plugins.DeviceIntegrity.cloudProjectNumber`.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "AttestationTokenResult",
+      "slug": "attestationtokenresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "token",
+          "tags": [],
+          "docs": "Token/assertion that must be verified server-side.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "keyId",
+          "tags": [],
+          "docs": "Key/provider handle used to create the token.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "format",
+          "tags": [],
+          "docs": "Native attestation format used by the current platform.",
+          "complexTypes": [
+            "AttestationFormat"
+          ],
+          "type": "AttestationFormat"
+        }
+      ]
+    },
+    {
+      "name": "CreateAttestationOptions",
+      "slug": "createattestationoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "keyId",
+          "tags": [],
+          "docs": "Key/provider handle returned from `prepareAttestation()`.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "challenge",
+          "tags": [],
+          "docs": "Backend-issued one-time challenge.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "cloudProjectNumber",
+          "tags": [],
+          "docs": "Android only. Google Cloud project number for Play Integrity.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "CreateAssertionOptions",
+      "slug": "createassertionoptions",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "keyId",
+          "tags": [],
+          "docs": "Key/provider handle returned from `prepareAttestation()`.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "payload",
+          "tags": [],
+          "docs": "Backend-issued one-time request payload or nonce.",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "cloudProjectNumber",
+          "tags": [],
+          "docs": "Android only. Google Cloud project number for Play Integrity.",
+          "complexTypes": [],
+          "type": "string | undefined"
+        }
+      ]
+    },
+    {
+      "name": "DeviceCheckTokenResult",
+      "slug": "devicechecktokenresult",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "token",
+          "tags": [],
+          "docs": "iOS DeviceCheck token encoded as base64.",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [
+    {
+      "name": "DeviceIntegrityPlatform",
+      "slug": "deviceintegrityplatform",
+      "docs": "",
+      "types": [
+        {
+          "text": "'android'",
+          "complexTypes": []
+        },
+        {
+          "text": "'ios'",
+          "complexTypes": []
+        },
+        {
+          "text": "'web'",
+          "complexTypes": []
+        }
+      ]
+    },
+    {
+      "name": "AttestationFormat",
+      "slug": "attestationformat",
+      "docs": "",
+      "types": [
+        {
+          "text": "'apple-app-attest'",
+          "complexTypes": []
+        },
+        {
+          "text": "'google-play-integrity-standard'",
+          "complexTypes": []
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": []
+}

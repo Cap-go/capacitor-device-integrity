@@ -30,7 +30,7 @@ document.getElementById('get-widevine').addEventListener('click', () => {
     DeviceIntegrity.getWidevineFingerprint({
       includeRawId: includeRawIdInput.checked,
       ...(hashSalt ? { hashSalt } : {}),
-    })
+    }),
   );
 });
 

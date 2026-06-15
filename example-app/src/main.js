@@ -1,3 +1,5 @@
+import { CapacitorUpdater } from '@capgo/capacitor-updater';
+import { Capacitor } from '@capacitor/core';
 import './style.css';
 import { DeviceIntegrity } from '@capgo/capacitor-device-integrity';
 
@@ -28,7 +30,7 @@ document.getElementById('get-widevine').addEventListener('click', () => {
     DeviceIntegrity.getWidevineFingerprint({
       includeRawId: includeRawIdInput.checked,
       ...(hashSalt ? { hashSalt } : {}),
-    })
+    }),
   );
 });
 
@@ -39,3 +41,9 @@ document.getElementById('prepare-attestation').addEventListener('click', () => {
 document.getElementById('get-device-check').addEventListener('click', () => {
   void run(() => DeviceIntegrity.getDeviceCheckToken());
 });
+
+if (Capacitor.isNativePlatform()) {
+  CapacitorUpdater.notifyAppReady().catch((error) => {
+    console.error('Capgo notifyAppReady failed', error);
+  });
+}

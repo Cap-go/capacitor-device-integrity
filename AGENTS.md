@@ -52,3 +52,7 @@ bun run verify:ios
 ```
 
 Real App Attest, DeviceCheck, Play Integrity, and Widevine behavior requires physical-device validation.
+
+## Timeout Policy
+
+- Keep CI, script, and runtime timeouts at 10 minutes or less. Use `timeout-minutes: 10` or lower in GitHub Actions and cap timeout values at `600000` ms, `600` seconds, or `10m` unless explicitly requested.

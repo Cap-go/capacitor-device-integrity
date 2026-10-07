@@ -1,6 +1,6 @@
 # @capgo/capacitor-device-integrity
 
-Collect device integrity and fraud signals in your Capacitor app: Play Integrity and a Widevine fingerprint on Android, App Attest and DeviceCheck on iOS. Your backend can verify them to stop abuse.
+Collect device integrity and fraud signals in your Capacitor app: Play Integrity and a Widevine fingerprint on Android, App Attest and DeviceCheck on iOS. Your backend can verify the attestation and DeviceCheck tokens and use the Widevine fingerprint as a risk signal.
 
 <a href="https://capgo.app/?ref=plugin_device_integrity"><img src="https://capgo.app/readme-banner.svg?repo=Cap-go/capacitor-device-integrity" alt="Capgo - Instant updates for Capacitor" /></a>
 
@@ -17,7 +17,7 @@ Collect device integrity and fraud signals in your Capacitor app: Play Integrity
 
 ## Key features
 
-- **Attestation**: `prepareAttestation()` and `createAttestation()` bind a token to a challenge from your backend.
+- **Attestation**: `prepareAttestation()` prepares the native attestation state, then `createAttestation()` creates a token bound to a challenge from your backend.
 - **Request assertions**: `createAssertion()` signs a request payload for server-side checks.
 - **Widevine fingerprint**: `getWidevineFingerprint()` returns a stable Android DRM-derived ID.
 - **DeviceCheck**: `getDeviceCheckToken()` creates an iOS token for fraud-state lookups.

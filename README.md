@@ -1,11 +1,28 @@
 # @capgo/capacitor-device-integrity
 
-<a href="https://capgo.app/"><img src="https://capgo.app/readme-banner.svg?repo=Cap-go/capacitor-device-integrity" alt="Capgo - Instant updates for Capacitor" /></a>
+Collect device integrity and fraud signals in your Capacitor app: Play Integrity and a Widevine fingerprint on Android, App Attest and DeviceCheck on iOS. Your backend can verify them to stop abuse.
+
+<a href="https://capgo.app/?ref=plugin_device_integrity"><img src="https://capgo.app/readme-banner.svg?repo=Cap-go/capacitor-device-integrity" alt="Capgo - Instant updates for Capacitor" /></a>
 
 <div align="center">
-  <h2><a href="https://capgo.app/?ref=plugin_device_integrity">Get Instant updates for your App with Capgo</a></h2>
-  <h2><a href="https://capgo.app/consulting/?ref=plugin_device_integrity">Missing a feature? We will build the plugin for you</a></h2>
+  <p><b>Capgo</b>: open-source live updates for Ionic and Capacitor apps. Ship OTA fixes and features instantly, without waiting for app store review.</p>
+  <h2><a href="https://capgo.app/register/?ref=plugin_device_integrity">➡️ Get started for free</a></h2>
+  <p>14-day unlimited free trial. No credit card required</p>
+  <p><a href="https://capgo.app/consulting/?ref=plugin_device_integrity">Missing a feature? We'll build the plugin for you 💪</a></p>
 </div>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Cap-go/capacitor-device-integrity/main/assets/github-social-preview.png" alt="@capgo/capacitor-device-integrity for Capacitor apps" width="300" />
+</p>
+
+## Key features
+
+- **Attestation**: `prepareAttestation()` and `createAttestation()` bind a token to a challenge from your backend.
+- **Request assertions**: `createAssertion()` signs a request payload for server-side checks.
+- **Widevine fingerprint**: `getWidevineFingerprint()` returns a stable Android DRM-derived ID.
+- **DeviceCheck**: `getDeviceCheckToken()` creates an iOS token for fraud-state lookups.
+- **Capabilities**: `getCapabilities()` reports what the current platform supports.
+- **Platforms**: iOS and Android. Not available on web.
 
 Device integrity and fraud signals for Capacitor:
 
